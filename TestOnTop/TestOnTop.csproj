@@ -1,0 +1,2048 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FEC81B08-4757-4CB0-81D8-1F51A22AE253}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TestOnTop</RootNamespace>
+    <AssemblyName>TestOnTop</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Apis, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.30.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.30.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.30.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.30.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.30.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.YouTube.v3, Version=1.30.0.1006, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.YouTube.v3.1.30.0.1006\lib\net45\Google.Apis.YouTube.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="libvideo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VideoLibrary.1.3.5\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\libvideo.dll</HintPath>
+    </Reference>
+    <Reference Include="Meta.Vlc, Version=16.5.1.0, Culture=neutral, PublicKeyToken=721a8c5379fa4056, processorArchitecture=x86">
+      <HintPath>..\packages\Meta.Vlc.17.06.20\lib\net45\x86\Meta.Vlc.dll</HintPath>
+    </Reference>
+    <Reference Include="Meta.Vlc.Wpf, Version=16.5.1.0, Culture=neutral, PublicKeyToken=721a8c5379fa4056, processorArchitecture=x86">
+      <HintPath>..\packages\Meta.Vlc.Wpf.17.06.20\lib\net45\x86\Meta.Vlc.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="YoutubeVideoVitals.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="client_secret_90216717933-jqbg5psb20erpgsfatfrd7sjce2uo3s1.apps.googleusercontent.com.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libvlc_x64\libvlc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\libvlccore.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libaccess_bd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libaccess_mms_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libaccess_realrtsp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libattachment_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libbluray-j2se-0.9.3.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libcdda_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libdshow_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libdtv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libdvdnav_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libdvdread_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libfilesystem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libftp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libhttp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libidummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libimem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\liblibbluray_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\liblive555_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\librar_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\librtp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libscreen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libsdp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libsftp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libshm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libsmb_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libtcp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libtimecode_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libudp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libvcd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libvdr_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access\libzip_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access_output\libaccess_output_dummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access_output\libaccess_output_file_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access_output\libaccess_output_http_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access_output\libaccess_output_livehttp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access_output\libaccess_output_shout_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\access_output\libaccess_output_udp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\liba52tofloat32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\liba52tospdif_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libaudiobargraph_a_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libaudio_format_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libchorus_flanger_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libcompressor_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libdolby_surround_decoder_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libdtstofloat32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libdtstospdif_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libequalizer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libgain_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libheadphone_channel_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libkaraoke_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libmono_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libmpgatofixed32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libnormvol_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libparam_eq_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libremap_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libsamplerate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libscaletempo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libsimple_channel_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libspatializer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libspeex_resampler_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libstereo_widen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libtrivial_channel_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_filter\libugly_resampler_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_mixer\libfloat_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_mixer\libinteger_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_output\libadummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_output\libafile_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_output\libamem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_output\libdirectsound_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_output\libmmdevice_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_output\libwasapi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\audio_output\libwaveout_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\liba52_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libadpcm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libaes3_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libaraw_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libavcodec_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libcc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libcdg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libcrystalhd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libcvdsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libddummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libdmo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libdts_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libdvbsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libdxva2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libedummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libfaad_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libflac_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libg711_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libjpeg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libkate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\liblibass_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\liblibmpeg2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\liblpcm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libmft_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libmpeg_audio_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libopus_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libpng_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libquicktime_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\librawvideo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libschroedinger_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libscte27_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libspeex_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libspudec_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libstl_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libsubsdec_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libsubstx3g_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libsubsusf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libsvcdsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libt140_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libtheora_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libtwolame_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libuleaddvaudio_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libvorbis_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libvpx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libx264_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libx265_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\codec\libzvbi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\libdummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\libgestures_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\libhotkeys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\libnetsync_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\libntservice_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\liboldrc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\libwin_hotkeys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\control\libwin_msg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libaiff_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libasf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libau_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libavi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libcaf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libdemuxdump_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libdemux_cdg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libdemux_stl_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libdiracsys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libes_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libflacsys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libgme_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libh264_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libhevc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libimage_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libmjpeg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libmkv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libmod_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libmp4_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libmpc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libmpgv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libnsc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libnsv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libnuv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libogg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libplaylist_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libps_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libpva_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\librawaud_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\librawdv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\librawvid_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libreal_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libsid_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libsmf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libsubtitle_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libts_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libtta_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libty_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libvc1_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libvobsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libvoc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libwav_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\demux\libxa_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\gui\libqt4_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\gui\libskins2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\lua\liblua_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\meta_engine\libfolder_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\meta_engine\libtaglib_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libaddonsfsstorage_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libaddonsvorepository_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libaudioscrobbler_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libexport_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libfingerprinter_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libgnutls_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\liblogger_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libstats_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libvod_rtsp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\misc\libxml_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_asf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_avi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_dummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_mp4_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_mpjpeg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_ogg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_ps_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_ts_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\mux\libmux_wav_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_copy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_dirac_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_flac_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_h264_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_hevc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_mlp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_mpeg4audio_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_mpeg4video_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_mpegvideo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\packetizer\libpacketizer_vc1_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\services_discovery\libmediadirs_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\services_discovery\libpodcast_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\services_discovery\libsap_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\services_discovery\libupnp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\services_discovery\libwindrive_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_filter\libdash_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_filter\libhttplive_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_filter\librecord_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_filter\libsmooth_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_autodel_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_bridge_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_chromaprint_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_delay_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_description_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_display_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_dummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_duplicate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_es_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_gather_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_langfromtelx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_mosaic_bridge_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_raop_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_record_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_rtp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_setid_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_smem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_standard_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_stats_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\stream_out\libstream_out_transcode_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\text_renderer\libfreetype_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\text_renderer\libtdummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libchain_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libgrey_yuv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi420_rgb_mmx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi420_rgb_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi420_rgb_sse2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi420_yuy2_mmx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi420_yuy2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi420_yuy2_sse2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi422_i420_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi422_yuy2_mmx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi422_yuy2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libi422_yuy2_sse2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\librv32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libswscale_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libyuy2_i420_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_chroma\libyuy2_i422_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libadjust_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libalphamask_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libanaglyph_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libantiflicker_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libatmo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libaudiobargraph_v_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libball_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libblendbench_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libblend_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libbluescreen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libcanvas_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libcolorthres_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libcroppadd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libdeinterlace_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\liberase_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libextract_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libfreeze_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libgaussianblur_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libgradfun_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libgradient_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libgrain_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libhqdn3d_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libinvert_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\liblogo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libmagnify_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libmarq_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libmirror_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libmosaic_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libmotionblur_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libmotiondetect_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\liboldmovie_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libposterize_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libpostproc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libpsychedelic_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libpuzzle_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libremoteosd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libripple_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\librotate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\librss_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libscale_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libscene_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libsepia_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libsharpen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libsubsdelay_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libtransform_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libvhs_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libwave_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_filter\libyuvp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libcaca_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libdirect2d_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libdirect3d_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libdirectdraw_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libdrawable_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libglwin32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libgl_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libvdummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libvmem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libwingdi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_output\libyuv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_splitter\libclone_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_splitter\libpanoramix_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\video_splitter\libwall_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\visualization\libglspectrum_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\visualization\libgoom_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\visualization\libprojectm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x64\plugins\visualization\libvisual_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\libvlc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\libvlccore.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libaccess_bd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libaccess_mms_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libaccess_realrtsp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libattachment_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libbluray-j2se-0.9.3.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libcdda_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libdshow_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libdtv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libdvdnav_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libdvdread_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libfilesystem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libftp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libhttp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libidummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libimem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\liblibbluray_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\liblive555_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\librar_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\librtp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libscreen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libsdp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libsftp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libshm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libsmb_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libtcp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libtimecode_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libudp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libvcd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libvdr_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access\libzip_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access_output\libaccess_output_dummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access_output\libaccess_output_file_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access_output\libaccess_output_http_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access_output\libaccess_output_livehttp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access_output\libaccess_output_shout_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\access_output\libaccess_output_udp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\liba52tofloat32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\liba52tospdif_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libaudiobargraph_a_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libaudio_format_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libchorus_flanger_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libcompressor_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libdolby_surround_decoder_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libdtstofloat32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libdtstospdif_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libequalizer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libgain_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libheadphone_channel_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libkaraoke_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libmono_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libmpgatofixed32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libnormvol_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libparam_eq_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libremap_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libsamplerate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libscaletempo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libsimple_channel_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libspatializer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libspeex_resampler_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libstereo_widen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libtrivial_channel_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_filter\libugly_resampler_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_mixer\libfloat_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_mixer\libinteger_mixer_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_output\libadummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_output\libafile_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_output\libamem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_output\libdirectsound_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_output\libmmdevice_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_output\libwasapi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\audio_output\libwaveout_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\liba52_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libadpcm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libaes3_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libaraw_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libavcodec_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libcc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libcdg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libcrystalhd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libcvdsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libddummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libdmo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libdts_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libdvbsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libdxva2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libedummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libfaad_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libflac_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libg711_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libjpeg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libkate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\liblibass_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\liblibmpeg2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\liblpcm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libmft_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libmpeg_audio_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libopus_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libpng_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libqsv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libquicktime_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\librawvideo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libschroedinger_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libscte27_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libspeex_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libspudec_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libstl_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libsubsdec_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libsubstx3g_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libsubsusf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libsvcdsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libt140_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libtheora_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libtwolame_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libuleaddvaudio_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libvorbis_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libvpx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libx264_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libx265_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\codec\libzvbi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\libdummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\libgestures_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\libhotkeys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\libnetsync_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\libntservice_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\liboldrc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\libwin_hotkeys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\control\libwin_msg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libaiff_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libasf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libau_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libavi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libcaf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libdemuxdump_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libdemux_cdg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libdemux_stl_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libdiracsys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libes_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libflacsys_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libgme_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libh264_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libhevc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libimage_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libmjpeg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libmkv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libmod_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libmp4_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libmpc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libmpgv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libnsc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libnsv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libnuv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libogg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libplaylist_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libps_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libpva_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\librawaud_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\librawdv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\librawvid_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libreal_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libsid_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libsmf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libsubtitle_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libts_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libtta_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libty_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libvc1_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libvobsub_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libvoc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libwav_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\demux\libxa_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\gui\libqt4_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\gui\libskins2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\lua\liblua_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\meta_engine\libfolder_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\meta_engine\libtaglib_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libaddonsfsstorage_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libaddonsvorepository_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libaudioscrobbler_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libexport_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libfingerprinter_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libgnutls_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\liblogger_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libstats_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libvod_rtsp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\misc\libxml_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_asf_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_avi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_dummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_mp4_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_mpjpeg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_ogg_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_ps_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_ts_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\mux\libmux_wav_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_copy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_dirac_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_flac_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_h264_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_hevc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_mlp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_mpeg4audio_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_mpeg4video_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_mpegvideo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\packetizer\libpacketizer_vc1_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\services_discovery\libmediadirs_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\services_discovery\libpodcast_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\services_discovery\libsap_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\services_discovery\libupnp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\services_discovery\libwindrive_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_filter\libdash_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_filter\libhttplive_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_filter\librecord_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_filter\libsmooth_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_autodel_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_bridge_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_chromaprint_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_delay_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_description_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_display_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_dummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_duplicate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_es_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_gather_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_langfromtelx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_mosaic_bridge_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_raop_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_record_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_rtp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_setid_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_smem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_standard_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_stats_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\stream_out\libstream_out_transcode_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\text_renderer\libfreetype_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\text_renderer\libtdummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libchain_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libgrey_yuv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi420_rgb_mmx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi420_rgb_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi420_rgb_sse2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi420_yuy2_mmx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi420_yuy2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi420_yuy2_sse2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi422_i420_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi422_yuy2_mmx_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi422_yuy2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libi422_yuy2_sse2_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\librv32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libswscale_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libyuy2_i420_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_chroma\libyuy2_i422_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libadjust_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libalphamask_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libanaglyph_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libantiflicker_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libatmo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libaudiobargraph_v_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libball_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libblendbench_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libblend_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libbluescreen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libcanvas_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libcolorthres_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libcroppadd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libdeinterlace_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\liberase_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libextract_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libfreeze_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libgaussianblur_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libgradfun_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libgradient_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libgrain_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libhqdn3d_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libinvert_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\liblogo_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libmagnify_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libmarq_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libmirror_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libmosaic_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libmotionblur_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libmotiondetect_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\liboldmovie_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libposterize_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libpostproc_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libpsychedelic_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libpuzzle_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libremoteosd_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libripple_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\librotate_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\librss_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libscale_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libscene_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libsepia_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libsharpen_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libsubsdelay_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libtransform_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libvhs_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libwave_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_filter\libyuvp_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libcaca_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libdirect2d_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libdirect3d_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libdirectdraw_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libdrawable_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libglwin32_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libgl_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libvdummy_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libvmem_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libwingdi_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_output\libyuv_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_splitter\libclone_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_splitter\libpanoramix_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\video_splitter\libwall_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\visualization\libglspectrum_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\visualization\libgoom_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\visualization\libprojectm_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libvlc_x86\plugins\visualization\libvisual_plugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
