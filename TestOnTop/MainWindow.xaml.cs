@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -119,12 +118,12 @@ namespace TestOnTop
                     videos.Add(v);
                 }
             });
-            LatestSubscriptionsVideos.AddRange(videos);
+            LatestSubscriptionsVideos.AddRange(videos.Where(x => x.Snippet.PublishedAt >= DateTime.Now.AddDays(-14)));
         }
 
         private IEnumerable<Video> GetSubscriptionLatestVideosAsync(Subscription subscription)
         {
-            var latestVideosToGrab = 5;
+            var latestVideosToGrab = 25;
 
             var youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
@@ -169,7 +168,28 @@ namespace TestOnTop
 
         private Double CalcThumbWidth()
         {
-            return this.ActualWidth / 5.1;
+
+          if (lbVideos.ActualWidth < 350)
+            {
+                return (lbVideos.ActualWidth / 1) - 17;
+            }
+            else if (lbVideos.ActualWidth < 550)
+            {
+                return (lbVideos.ActualWidth / 2) -11;
+            }
+            else if(lbVideos.ActualWidth < 750)
+            {
+                return (lbVideos.ActualWidth / 3) - 7;
+            }
+            else if(lbVideos.ActualWidth < 950)
+            {
+                return (lbVideos.ActualWidth / 4) - 6;
+            }
+            else
+            {
+                return (lbVideos.ActualWidth / 5) - 5;
+            }
+          
         }
 
         private void StartVideo(string Url)
@@ -228,16 +248,7 @@ namespace TestOnTop
         {
             if (e.Key == Key.G)
             {
-                vlcPlayer.Stop();
-                lbVideos.Visibility = Visibility.Visible;
-                PanelVLC.Background = Brushes.White;
-                PanelVLC.Visibility = Visibility.Hidden;
-                TopBar.Visibility = Visibility.Visible;
-                this.ResizeMode = ResizeMode.CanResizeWithGrip;
-
-                var hwnd = new WindowInteropHelper(this).Handle;
-                WindowsServices.SetWindowNormal(hwnd);
-                HiddenMode = false;
+                StopYoutubeAndShowVideoList();
             }
             else if (e.Key == Key.H)
             {
@@ -255,6 +266,8 @@ namespace TestOnTop
                         margin.Top = 0;
                         PanelVLC.Margin = margin;
 
+                        this.BorderThickness = new Thickness(1);
+
                         var hwnd = new WindowInteropHelper(this).Handle;
                         WindowsServices.SetWindowNormal(hwnd);
                         HiddenMode = false;
@@ -271,6 +284,8 @@ namespace TestOnTop
                         margin.Top = -30;
                         PanelVLC.Margin = margin;
 
+                        this.BorderThickness = new Thickness(0);
+
                         var hwnd = new WindowInteropHelper(this).Handle;
                         WindowsServices.SetWindowExTransparent(hwnd);
                         HiddenMode = true;
@@ -284,6 +299,22 @@ namespace TestOnTop
                     vlcPlayer.VlcMediaPlayer.PauseOrResume();
                 }
             }
+        }
+
+        private void StopYoutubeAndShowVideoList()
+        {
+            vlcPlayer.Stop();
+            lbVideos.Visibility = Visibility.Visible;
+            PanelVLC.Background = Brushes.White;
+            PanelVLC.Visibility = Visibility.Hidden;
+            TopBar.Visibility = Visibility.Visible;
+            this.ResizeMode = ResizeMode.CanResizeWithGrip;
+
+            this.BorderThickness = new Thickness(1);
+
+            var hwnd = new WindowInteropHelper(this).Handle;
+            WindowsServices.SetWindowNormal(hwnd);
+            HiddenMode = false;
         }
 
         private void VlcSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
@@ -304,30 +335,6 @@ namespace TestOnTop
                 VlcSliderTime.Text = TimeSpan.FromMilliseconds(VlcSlider.Value).ToString(timespanFormat);
             }
         }
-    }
 
-    public static class WindowsServices
-    {
-        private const int WS_EX_TRANSPARENT = 0x00000020;
-        private const int WS_EX_LEFT = 0x00000000;
-        private const int GWL_EXSTYLE = (-20);
-
-        [DllImport("user32.dll")]
-        private static extern int GetWindowLong(IntPtr hwnd, int index);
-
-        [DllImport("user32.dll")]
-        private static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
-
-        public static void SetWindowExTransparent(IntPtr hwnd)
-        {
-            var extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
-            SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
-        }
-
-        public static void SetWindowNormal(IntPtr hwnd)
-        {
-            var extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
-            SetWindowLong(hwnd, GWL_EXSTYLE, WS_EX_LEFT);
-        }
     }
 }

@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         Topmost="True" ShowInTaskbar="False" SizeChanged="Window_SizeChanged" Keyboard.KeyDown="myWindow_KeyDown" AllowsTransparency="True" WindowStyle="None"
-        ResizeMode="CanResizeWithGrip" Background="Transparent">
+        ResizeMode="CanResizeWithGrip" Background="Transparent" BorderThickness="1" BorderBrush="Black">
     <Window.Resources>
         <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
             <GradientStop Color="CadetBlue" Offset="0.4" />
@@ -33,15 +33,18 @@
         <ListBox Name="lbVideos" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseLeftButtonDown="lbVideos_PreviewMouseLeftButtonDown" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" Width="{Binding ElementName=myWindow, Path=ListBoxTemplateWidth}" />
-                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Title}" Width="{Binding ElementName=myWindow, Path=ListBoxTemplateWidth}" />
-                    </StackPanel>
+                    <Border BorderThickness="1" BorderBrush="Black" Margin="5,5,5,5" Padding="5,5,5,5">
+                        <StackPanel Orientation="Vertical" Background="Blue">
+                            <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" />
+                            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Title}" />
+                        </StackPanel>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" 
+                               ItemWidth="{Binding ElementName=myWindow, Path=ListBoxTemplateWidth}" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
@@ -50,10 +53,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="20" />
-                <RowDefinition Height="20" />
-
+                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
-            <wpf:VlcPlayer xmlns:wpf="clr-namespace:Meta.Vlc.Wpf;assembly=Meta.Vlc.Wpf" x:Name="vlcPlayer" Grid.Row="0"/>
+            <wpf:VlcPlayer xmlns:wpf="clr-namespace:Meta.Vlc.Wpf;assembly=Meta.Vlc.Wpf" x:Name="vlcPlayer" Grid.Row="0" />
 
             <Slider Name="VlcSlider" Maximum="1" Minimum="0" Thumb.DragCompleted="VlcSlider_DragCompleted" Thumb.DragStarted="VlcSlider_DragStarted"
                     Thumb.DragDelta="VlcSlider_DragDelta" Grid.Row="1" VerticalAlignment="Top" />
