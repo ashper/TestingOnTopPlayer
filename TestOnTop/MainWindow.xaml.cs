@@ -16,6 +16,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
 
 namespace TestOnTop
 {
@@ -24,6 +25,8 @@ namespace TestOnTop
         private List<Subscription> Subscriptions;
         private List<Video> LatestSubscriptionsVideos;
         private UserCredential Credental;
+        private bool HiddenMode;
+        const string timespanFormat = "h':'m':'s";
 
         private bool isDraggingSlider = false;
 
@@ -65,7 +68,7 @@ namespace TestOnTop
 
             lbVideos.ItemsSource = test2;
             ListBoxTemplateWidth = 100;
-
+            HiddenMode = false;
         }
 
         public void DragWindow(object sender, MouseButtonEventArgs args)
@@ -121,6 +124,8 @@ namespace TestOnTop
 
         private IEnumerable<Video> GetSubscriptionLatestVideosAsync(Subscription subscription)
         {
+            var latestVideosToGrab = 5;
+
             var youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = Credental,
@@ -137,7 +142,7 @@ namespace TestOnTop
                 var uploadPlaylistId = test3[0].ContentDetails.RelatedPlaylists.Uploads;
 
                 var playlistRequest = youtubeService.PlaylistItems.List("snippet");
-                playlistRequest.MaxResults = 15;
+                playlistRequest.MaxResults = latestVideosToGrab;
                 playlistRequest.PlaylistId = uploadPlaylistId;
                 var test4 = playlistRequest.Execute();
 
@@ -148,7 +153,7 @@ namespace TestOnTop
                 }
 
                 var videosRequest = youtubeService.Videos.List("snippet,contentDetails,statistics");
-                videosRequest.MaxResults = 15;
+                videosRequest.MaxResults = latestVideosToGrab;
                 videosRequest.Id = string.Join(",", idList);
                 var test5 = videosRequest.Execute();
 
@@ -181,8 +186,14 @@ namespace TestOnTop
             {
                 this.Dispatcher.Invoke(() =>
                 {
+                    vlcPlayer.VerticalContentAlignment = VerticalAlignment.Top;
+                    Point relativePoint = VlcSlider.TransformToAncestor(PanelVLC)
+                          .Transform(new Point(0, 0));
+                    vlcPlayer.Height = relativePoint.Y;
+                    VlcMediaTotalTime.Text = vlcPlayer.Length.ToString(timespanFormat);
                     VlcSlider.Maximum = vlcPlayer.Length.TotalMilliseconds;
                     VlcSlider.Value = vlcPlayer.Time.TotalMilliseconds;
+                    VlcSliderTime.Text = TimeSpan.FromMilliseconds(VlcSlider.Value).ToString(timespanFormat);
                 });
             }
         }
@@ -197,8 +208,10 @@ namespace TestOnTop
             var item = ItemsControl.ContainerFromElement(sender as ListBox, e.OriginalSource as DependencyObject) as ListBoxItem;
             if (item != null)
             {
+                PanelVLC.Background = Brushes.White;
                 lbVideos.Visibility = Visibility.Hidden;
-                stackPanelVLC.Visibility = Visibility.Visible;
+                PanelVLC.Visibility = Visibility.Visible;
+
                 var vitals = (YoutubeVideoVitals)item.DataContext;
 
                 var youtube = VideoLibrary.YouTube.Default;
@@ -207,30 +220,69 @@ namespace TestOnTop
                 var test = videosDetails.Where(x => x.Format == VideoLibrary.VideoFormat.Mp4 && x.AudioFormat != VideoLibrary.AudioFormat.Unknown);
                 var test2 = test.First().Uri;
                 StartVideo(test2);
+                HiddenMode = false;
             }
         }
 
-        private void myWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void myWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.G)
+            if (e.Key == Key.G)
             {
                 vlcPlayer.Stop();
                 lbVideos.Visibility = Visibility.Visible;
-                stackPanelVLC.Visibility = Visibility.Hidden;
-                normalWindow.Visibility = Visibility.Visible;
+                PanelVLC.Background = Brushes.White;
+                PanelVLC.Visibility = Visibility.Hidden;
+                TopBar.Visibility = Visibility.Visible;
+                this.ResizeMode = ResizeMode.CanResizeWithGrip;
 
                 var hwnd = new WindowInteropHelper(this).Handle;
                 WindowsServices.SetWindowNormal(hwnd);
+                HiddenMode = false;
             }
-            else if (e.Key == System.Windows.Input.Key.H)
+            else if (e.Key == Key.H)
             {
-                this.Width = vlcPlayer.ActualWidth;
-                this.Height = vlcPlayer.ActualHeight;
-                this.ResizeMode = ResizeMode.NoResize;
-                normalWindow.Visibility = Visibility.Hidden;
+                if (PanelVLC.Visibility == Visibility.Visible)
+                {
+                    if (HiddenMode == true)
+                    {
+                        this.ResizeMode = ResizeMode.CanResizeWithGrip;
+                        TopBar.Visibility = Visibility.Visible;
+                        lbVideos.Visibility = Visibility.Visible;
+                        VlcSlider.Visibility = Visibility.Visible;
+                        PanelVLC.Background = Brushes.White;
 
-                var hwnd = new WindowInteropHelper(this).Handle;
-                WindowsServices.SetWindowExTransparent(hwnd);
+                        Thickness margin = PanelVLC.Margin;
+                        margin.Top = 0;
+                        PanelVLC.Margin = margin;
+
+                        var hwnd = new WindowInteropHelper(this).Handle;
+                        WindowsServices.SetWindowNormal(hwnd);
+                        HiddenMode = false;
+                    }
+                    else
+                    {
+                        this.ResizeMode = ResizeMode.NoResize;
+                        TopBar.Visibility = Visibility.Hidden;
+                        lbVideos.Visibility = Visibility.Hidden;
+                        VlcSlider.Visibility = Visibility.Hidden;
+                        PanelVLC.Background = Brushes.Transparent;
+
+                        Thickness margin = PanelVLC.Margin;
+                        margin.Top = -30;
+                        PanelVLC.Margin = margin;
+
+                        var hwnd = new WindowInteropHelper(this).Handle;
+                        WindowsServices.SetWindowExTransparent(hwnd);
+                        HiddenMode = true;
+                    }
+                }
+            }
+            else if (e.Key == Key.Space)
+            {
+                if (vlcPlayer.VlcMediaPlayer.CanPause || vlcPlayer.VlcMediaPlayer.CanPlay)
+                {
+                    vlcPlayer.VlcMediaPlayer.PauseOrResume();
+                }
             }
         }
 
@@ -243,6 +295,14 @@ namespace TestOnTop
         private void VlcSlider_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
         {
             isDraggingSlider = true;
+        }
+
+        private void VlcSlider_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (isDraggingSlider)
+            {
+                VlcSliderTime.Text = TimeSpan.FromMilliseconds(VlcSlider.Value).ToString(timespanFormat);
+            }
         }
     }
 
@@ -269,7 +329,5 @@ namespace TestOnTop
             var extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
             SetWindowLong(hwnd, GWL_EXSTYLE, WS_EX_LEFT);
         }
-
-        
     }
 }
