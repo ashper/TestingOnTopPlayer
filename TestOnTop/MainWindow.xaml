@@ -34,7 +34,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1" BorderBrush="Black" Margin="5,5,5,5" Padding="5,5,5,5">
-                        <StackPanel Orientation="Vertical" Background="Blue">
+                        <StackPanel Orientation="Vertical">
                             <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" />
                             <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Title}" />
                         </StackPanel>
