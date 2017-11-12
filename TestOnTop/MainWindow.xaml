@@ -8,10 +8,8 @@
         Topmost="True" ShowInTaskbar="False" SizeChanged="Window_SizeChanged" Keyboard.KeyDown="myWindow_KeyDown" AllowsTransparency="True" WindowStyle="None"
         ResizeMode="CanResizeWithGrip" Background="Transparent" BorderThickness="1" BorderBrush="Black">
     <Window.Resources>
-        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
-            <GradientStop Color="CadetBlue" Offset="0.4" />
-            <GradientStop Color="Gray" Offset="1" />
-        </LinearGradientBrush>
+        <SolidColorBrush x:Key="WindowFrameBrush" Color="Red">
+        </SolidColorBrush>
     </Window.Resources>
 
     <Grid Background="Transparent">
